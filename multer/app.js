@@ -14,34 +14,30 @@ app.use(express.urlencoded({
 let storage = multer.diskStorage({
     destination: async (req, file, cb) => {
         console.log('dentro do destination');
-
-
-
-        cb(null, './temp');
-
-        console.log('pedro 33 ')
-        
+        cb(null, './temp');         // faz o retorno a passa a back
     },
     filename: (req, file, cb) => {
         console.log('dentro de fileName')
         const fileName = Date.now() + '' + Math.round(Math.random() * 1E9)
-        cb(null, fileName + '.txt')
+        cb(null, fileName + '.txt') // nome do arquivo e "extensão"
     },
+    
 });
-// 
+
 let upload = multer({
     storage: storage,
 });
 
-app.post('/home', upload.single('file'), async function (req, res) {
+app.post('/home', upload.single('file'), async function (req, res) { 
 
+    // sistema só chegara nessa parte se multer conseguir salvar o arquivo sem erros
     console.log(req.file, ' file')
 
     res.send('deu certo?')
 });
 
 
-app.get('/home', (req, res) => {
+app.get('/home', (req, res) => { // homeeeee
     res.render('home')
 })
 
