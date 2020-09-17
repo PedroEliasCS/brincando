@@ -12,24 +12,30 @@ app.use(express.urlencoded({
 }));
 
 let storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-            console.log('dentro do destination');
-            cb(null, './temp');
+    destination: async (req, file, cb) => {
+        console.log('dentro do destination');
+
+
+
+        cb(null, './temp');
+
+        console.log('pedro 33 ')
+        
     },
     filename: (req, file, cb) => {
         console.log('dentro de fileName')
-        const fileName =  Date.now() +''+ Math.round(Math.random() * 1E9)
+        const fileName = Date.now() + '' + Math.round(Math.random() * 1E9)
         cb(null, fileName + '.txt')
     },
 });
 // 
-let upload = multer({storage: storage});
+let upload = multer({
+    storage: storage,
+});
 
-app.post('/home', upload.single('file'),function(req, res) {   
-    
-    console.log('2000')
-    const file = req.file
-    console.log(file, ' file')
+app.post('/home', upload.single('file'), async function (req, res) {
+
+    console.log(req.file, ' file')
 
     res.send('deu certo?')
 });
