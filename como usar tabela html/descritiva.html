@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>tabela default</title>
+</head>
+<body>
+    <section class="logo">
+    </section>
+    <section class="tela4">
+        <h1>
+            Valores já cadastrados
+        </h1>
+        <div class="table-responsive" id="txttab" style="margin-top: 5%;">
+            <table class="table table-hover" id="idTabela">
+                <tr>
+                    <th id="TipoP">Tipo dos Dados</th>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <script>
+        let vet = [2, 1, 12, 3, 1, 23, 12, 41, 24, 12, 2, 215345] // impormações que deveram se exportadas
+        let i = 0 // contagem de linhas
+        for (let prop in vet) { // for que parece lendo o vet
+            var tabela = document.getElementById('idTabela'); // id da tabela
+            var numeroLinhas = 1 // ; // linha inicial
+            var linha = tabela.insertRow(numeroLinhas); // seta a linha que será inserida a nova informação
+            var celula1 = linha.insertCell(0); // seta o lugar a coluna onde será inserida
+            celula1.innerHTML = vet[i] //  exportação
+            i++
+        };
+    </script>
+</body>
+
+</html>

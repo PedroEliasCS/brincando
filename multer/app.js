@@ -28,7 +28,7 @@ let upload = multer({
     storage: storage,
 });
 
-app.post('/home', upload.single('file'), async function (req, res) { 
+app.post('/home', upload.single('inputTxt'), async function (req, res) { 
 
     // sistema só chegara nessa parte se multer conseguir salvar o arquivo sem erros
     console.log(req.file, ' file')
