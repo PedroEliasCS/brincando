@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="api()">aperta</button>
+    <script>
+        function api() {
+            console.log('inicio')
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://cep.la/franca-cidade", true);
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.onreadystatechange = function () {
+                if ((xhr.readyState == 0 || xhr.readyState == 4) && xhr.status == 200)
+                    console.log(xhr.responseText)
+            };
+            xhr.send(null);
+        }
+    </script>
+</body>
+
+</html>
